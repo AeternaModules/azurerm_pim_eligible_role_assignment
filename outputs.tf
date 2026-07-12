@@ -1,3 +1,7 @@
+output "pim_eligible_role_assignments_id" {
+  description = "Map of id values across all pim_eligible_role_assignments, keyed the same as var.pim_eligible_role_assignments"
+  value       = { for k, v in azurerm_pim_eligible_role_assignment.pim_eligible_role_assignments : k => v.id }
+}
 output "pim_eligible_role_assignments_condition" {
   description = "Map of condition values across all pim_eligible_role_assignments, keyed the same as var.pim_eligible_role_assignments"
   value       = { for k, v in azurerm_pim_eligible_role_assignment.pim_eligible_role_assignments : k => v.condition }
