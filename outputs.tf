@@ -28,7 +28,7 @@ output "pim_eligible_role_assignments_role_definition_id" {
 }
 output "pim_eligible_role_assignments_schedule" {
   description = "Map of schedule values across all pim_eligible_role_assignments, keyed the same as var.pim_eligible_role_assignments"
-  value       = { for k, v in azurerm_pim_eligible_role_assignment.pim_eligible_role_assignments : k => v.schedule if v.schedule != null && length(v.schedule) > 0 }
+  value       = { for k, v in azurerm_pim_eligible_role_assignment.pim_eligible_role_assignments : k => one(v.schedule) if v.schedule != null && length(v.schedule) > 0 }
 }
 output "pim_eligible_role_assignments_scope" {
   description = "Map of scope values across all pim_eligible_role_assignments, keyed the same as var.pim_eligible_role_assignments"
@@ -36,6 +36,6 @@ output "pim_eligible_role_assignments_scope" {
 }
 output "pim_eligible_role_assignments_ticket" {
   description = "Map of ticket values across all pim_eligible_role_assignments, keyed the same as var.pim_eligible_role_assignments"
-  value       = { for k, v in azurerm_pim_eligible_role_assignment.pim_eligible_role_assignments : k => v.ticket if v.ticket != null && length(v.ticket) > 0 }
+  value       = { for k, v in azurerm_pim_eligible_role_assignment.pim_eligible_role_assignments : k => one(v.ticket) if v.ticket != null && length(v.ticket) > 0 }
 }
 
